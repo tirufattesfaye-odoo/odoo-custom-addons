@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_school_exam,school.exam,model_school_exam,base.group_user,1,1,1,1
+access_school_exam_line,school.exam.line,model_school_exam_line,base.group_user,1,1,1,1
+access_school_exam_mark,school.exam.mark,model_school_exam_mark,base.group_user,1,1,1,1
+access_school_exam_mark_line,school.exam.mark.line,model_school_exam_mark_line,base.group_user,1,1,1,1

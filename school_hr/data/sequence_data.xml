@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_school_staff" model="ir.sequence">
+        <field name="name">School Staff Sequence</field>
+        <field name="code">school.staff</field>
+        <field name="prefix">STF</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

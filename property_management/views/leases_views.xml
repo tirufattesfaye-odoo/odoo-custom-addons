@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_lease_list" model="ir.ui.view">
+        <field name="name">lease.list</field>
+        <field name="model">lease.management</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="tenant_id"/>
+                <field name="property_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="monthly_rent" widget="monetary"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_lease_form" model="ir.ui.view">
+        <field name="name">lease.form</field>
+        <field name="model">lease.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_active" type="object" string="Activate" class="oe_highlight"
+                            groups="property_management.group_property_manager"/>
+                    <button name="action_expired" type="object" string="Mark as Expired" class="oe_highlight"
+                            groups="property_management.group_property_manager"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tenant_id"/>
+                        <field name="property_id"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="monthly_rent" widget="monetary"/>
+                    </group>
+                    <notebook>
+                        <page string="Payments">
+                            <field name="payment_ids" widget="one2many_list"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_lease_graph" model="ir.ui.view">
+        <field name="name">lease.graph</field>
+        <field name="model">lease.management</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="monthly_rent" type="measure"/>
+                <field name="property_id" type="row"/>
+            </graph>
+        </field>
+    </record>
+    <record id="view_lease_kanban" model="ir.ui.view">
+        <field name="name">lease.kanban</field>
+        <field name="model">lease.management</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="tenant_id"/>
+                <field name="property_id"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card {{ record.state.raw_value == 'draft' ? 'oe_kanban_color_0' : record.state.raw_value == 'active' ? 'oe_kanban_color_1' : 'oe_kanban_color_2' }}">
+                            <div>
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                            <div>Tenant:
+                                <field name="tenant_id"/>
+                            </div>
+                            <div>Property:
+                                <field name="property_id"/>
+                            </div>
+                            <div>Status:
+                                <field name="state"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_lease_management_graph" model="ir.ui.view">
+    <field name="name">lease.management.graph</field>
+    <field name="model">lease.management</field>
+    <field name="arch" type="xml">
+        <graph string="Lease Analysis" type="bar">
+            <!-- Group by property or tenant -->
+            <field name="property_id" type="row"/>
+
+            <!-- Measure: Monthly Rent -->
+            <field name="monthly_rent" type="measure"/>
+
+            <!-- Optional: Add more measures
+            <field name="total_rent" type="measure"/> -->
+        </graph>
+    </field>
+</record>
+
+</odoo>

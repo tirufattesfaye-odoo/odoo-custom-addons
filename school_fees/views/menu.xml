@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_school_fee" model="ir.actions.act_window">
+        <field name="name">School Fees</field>
+        <field name="res_model">school.fee</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_school_fees_root" name="School Fees"
+              parent="school_management.menu_school_root"/>
+    <menuitem id="menu_school_fees" name="Fees"
+              parent="menu_school_fees_root" action="action_school_fee"/>
+
+
+</odoo>

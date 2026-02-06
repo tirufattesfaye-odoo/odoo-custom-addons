@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="seq_student" model="ir.sequence">
+    <field name="name">Student</field>
+    <field name="code">school.student</field>
+    <field name="prefix">STD%(y)s/</field>
+    <field name="padding">4</field>
+  </record>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_school_report_card_wizard,access.school.report.card.wizard,model_school_report_card_wizard,base.group_user,1,0,0,0
+access_school_export_attendance_wizard,access.school.report.attendance.xlsx,model_school_report_attendance_xlsx,base.group_user,1,0,0,0

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Tree/List View -->
+  <record id="view_guardian_list" model="ir.ui.view">
+    <field name="name">school.guardian.list</field>
+    <field name="model">school.guardian</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="relation"/>
+        <field name="partner_id"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- Form View -->
+  <record id="view_guardian_form" model="ir.ui.view">
+    <field name="name">school.guardian.form</field>
+    <field name="model">school.guardian</field>
+    <field name="arch" type="xml">
+      <form string="Guardian">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="relation"/>
+            <field name="partner_id"/>
+          </group>
+          <group>
+            <field name="student_ids" widget="many2many_tags"/>
+            <field name="notes"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action for Attendance -->
+    <record id="action_school_attendance" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">school.attendance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Root Attendance Menu under school_management -->
+    <menuitem id="menu_school_attendance_root"
+              name="Attendance"
+              parent="school_management.menu_school_root"
+              sequence="30"/>
+
+    <!-- Attendance Sheets Menu linked to Action -->
+    <menuitem id="menu_school_attendance"
+              name="Attendance Sheets"
+              parent="menu_school_attendance_root"
+              action="action_school_attendance"
+              sequence="10"/>
+</odoo>

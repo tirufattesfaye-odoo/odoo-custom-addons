@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_exam" model="ir.actions.act_window">
+        <field name="name">Exams</field>
+        <field name="res_model">school.exam</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_exam_marks" model="ir.actions.act_window">
+        <field name="name">Exam Marks</field>
+        <field name="res_model">school.exam.mark</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_school_exam_root" name="Exams"
+              parent="school_management.menu_school_root" sequence="30"/>
+
+    <menuitem id="menu_exam" name="Manage Exams"
+              parent="menu_school_exam_root" action="action_exam" sequence="10"/>
+    <menuitem id="menu_exam_marks" name="Marks &amp; Results"
+              parent="menu_school_exam_root" action="action_exam_marks" sequence="20"/>
+
+</odoo>

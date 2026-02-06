@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_academic_year,access.academic.year,model_academic_year,base.group_user,1,1,1,1
+access_academic_term,access.academic.term,model_academic_term,base.group_user,1,1,1,1
+access_course,access.course,model_course_course,base.group_user,1,1,1,1
+access_subject,access.subject,model_course_subject,base.group_user,1,1,1,1
+access_timetable,access.timetable,model_course_timetable,base.group_user,1,1,1,1

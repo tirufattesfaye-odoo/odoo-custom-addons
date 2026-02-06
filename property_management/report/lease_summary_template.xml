@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_lease_summary_report" model="ir.actions.report">
+        <field name="name">Lease Summary Report</field>
+        <field name="model">lease.management</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">property_management.lease_summary_template</field>
+        <field name="report_file">property_management.lease_summary_template</field>
+        <field name="print_report_name">'Lease_Summary_Report'</field>
+    </record>
+
+    <template id="lease_summary_template">
+        <t t-name="property_management.lease_summary_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">   <!-- LOOP over docs -->
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <main>
+                                <!-- Header with Company Info -->
+                                <div class="header">
+                                    <img t-if="o.company_id.logo"
+                                         class="o_company_logo_small"
+                                         t-att-src="'data:image/png;base64,%s' % (o.company_id.logo)"
+                                         alt="Logo"/>
+
+                                    <h1 t-esc="o.company_id.name" style="font-size:24px;"/>
+                                    <p t-esc="o.company_id.city or ''" style="font-size:14px;"/>
+                                    <p t-esc="o.company_id.phone or ''" style="font-size:14px;"/>
+                                    <p t-esc="o.company_id.email or ''" style="font-size:14px;"/>
+                                </div>
+
+                                <!-- Report Title -->
+                                <h2 style="text-align:center;">Lease Summary Report</h2>
+
+                                <!-- Lease Table -->
+                                <table style="width:100%; border-collapse: collapse;" border="1">
+                                    <thead>
+                                        <tr>
+                                            <th>Tenant Name</th>
+                                            <th>Property</th>
+                                            <th>Lease Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Monthly Rent</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><t t-esc="o.tenant_id.name or ''"/></td>
+                                            <td><t t-esc="o.property_id.name or ''"/></td>
+                                            <td><t t-esc="o.start_date or ''"/></td>
+                                            <td><t t-esc="o.end_date or ''"/></td>
+                                            <td><t t-esc="o.monthly_rent or 0.0"/></td>
+                                            <td><t t-esc="o.state or ''"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </main>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

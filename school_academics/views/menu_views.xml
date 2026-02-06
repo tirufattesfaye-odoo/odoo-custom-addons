@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="action_academic_terms" model="ir.actions.act_window">
+        <field name="name">Academic Terms</field>
+        <field name="res_model">academic.term</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_academic_years" model="ir.actions.act_window">
+        <field name="name">Academic Years</field>
+        <field name="res_model">academic.year</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_courses" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">course.course</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_subjects" model="ir.actions.act_window">
+        <field name="name">Subjects</field>
+        <field name="res_model">course.subject</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_timetables" model="ir.actions.act_window">
+        <field name="name">Timetables</field>
+        <field name="res_model">course.timetable</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <!-- Root Academics Menu under School Configuration -->
+    <menuitem id="menu_school_academics_root"
+              name="Academics"
+              parent="school_management.menu_school_config"
+              sequence="30"/>
+
+    <!-- Academic Years -->
+    <menuitem id="menu_academic_year"
+              name="Academic Years"
+              parent="school_academics.menu_school_academics_root"
+              action="action_academic_years"
+              sequence="10"/>
+
+    <!-- Academic Terms -->
+    <menuitem id="menu_academic_term"
+              name="Academic Terms"
+              parent="school_academics.menu_school_academics_root"
+              action="action_academic_terms"
+              sequence="20"/>
+
+    <!-- Courses -->
+    <menuitem id="menu_course"
+              name="Courses"
+              parent="school_academics.menu_school_academics_root"
+              action="action_courses"
+              sequence="30"/>
+
+    <!-- Subjects -->
+    <menuitem id="menu_subject"
+              name="Subjects"
+              parent="school_academics.menu_school_academics_root"
+              action="action_subjects"
+              sequence="40"/>
+
+    <!-- Timetables -->
+    <menuitem id="menu_timetable"
+              name="Timetables"
+              parent="school_academics.menu_school_academics_root"
+              action="action_timetables"
+              sequence="50"/>
+</odoo>

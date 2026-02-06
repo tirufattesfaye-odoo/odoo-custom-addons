@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_action_student_card"
+        string="Student Report Card"
+        model="school.student"
+        report_type="qweb-pdf"
+        name="school_report.report_student_card_template"
+        file="school_report.report_student_card_template"
+        print_report_name="'ReportCard-%s' % (object.name)"
+    />
+</odoo>

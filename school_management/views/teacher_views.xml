@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Tree/List -->
+  <record id="view_teacher_list" model="ir.ui.view">
+    <field name="name">school.teacher.list</field>
+    <field name="model">school.teacher</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="employee_code"/>
+        <field name="subject_expertise"/>
+        <field name="partner_id"/>
+        <field name="active"/>
+      </list>
+    </field>
+  </record>
+
+  <!-- Form -->
+  <record id="view_teacher_form" model="ir.ui.view">
+    <field name="name">school.teacher.form</field>
+    <field name="model">school.teacher</field>
+    <field name="arch" type="xml">
+      <form string="Teacher">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="employee_code"/>
+            <field name="subject_expertise"/>
+            <field name="partner_id"/>
+            <field name="active"/>
+          </group>
+          <group>
+            <field name="notes"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>

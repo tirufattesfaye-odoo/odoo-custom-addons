@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_book_details_tree" model="ir.ui.view">
+       <field name="name">book.details.tree</field>
+       <field name="model">book.details</field>
+       <field name="arch" type="xml">
+           <list>
+                <field name="title"/>
+                <field name="author"/>
+                <field name="publisher"/>
+                <field name="published_date"/>
+                <field name="book_age"/>
+           </list>
+       </field>
+   </record>
+   <record id="view_book_details_form" model="ir.ui.view">
+       <field name="name">book.details.form</field>
+       <field name="model">book.details</field>
+       <field name="arch" type="xml">
+           <form>
+               <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="author"/>
+                        <field name="publisher"/>
+                        <field name="published_date"/>
+                        <field name="book_age"/>
+                        <field name="cover" widget="image" class="oe_avatar"/>
+                    </group>
+                </sheet>
+
+           </form>
+       </field>
+   </record>
+   <record id="view_book_details_kanban" model="ir.ui.view">
+    <field name="name">book.details.kanban</field>
+    <field name="model">book.details</field>
+    <field name="arch" type="xml">
+        <kanban class="o_kanban_small_column">
+            <field name="title"/>
+            <field name="author"/>
+            <field name="publisher"/>
+            <field name="published_date"/>
+            <field name="cover"/>
+
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="o_kanban_record">
+                        <!-- Book Cover -->
+                        <div style="float:left; margin-right:10px;">
+
+
+                            <field name="cover" widget="image" class="o_kanban_image" style="width:120px; height:160px; object-fit:cover;"/>
+
+
+                        </div>
+
+                        <!-- Book Details -->
+
+                            <br/>
+
+                            <div>
+                                <p><strong>Book Title:</strong> <t t-esc="record.title.value"/></p>
+                                <p><strong>Author:</strong> <t t-esc="record.author.value"/></p>
+                                <p><strong>Publisher:</strong> <t t-esc="record.publisher.value"/></p>
+                                <p><strong>published_date:</strong> <t t-esc="record.published_date.value"/></p>
+                           </div>
+                      </div>
+                    </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+
+    <record id="book_details_search" model="ir.ui.view">
+       <field name="name">book.details.search</field>
+       <field name="model">book.details</field>
+       <field name="arch" type="xml">
+           <search string="Search Books">
+            <!-- Quick search by Title -->
+            <field name="title" string="Title"/>
+
+                 <!-- search by filter -->
+               <filter string="Book Age ≤ 3" name="book_age_young"  domain="[('book_age','&lt;=', 3)]"/>
+               <filter string="Year ≥ 10"    name="book_year_old"   domain="[('published_date','&lt;=', (context_today() - relativedelta(years=10)).strftime('%%Y-%%m-%%d'))]"/>
+
+
+            <!-- Group By Options -->
+           <group expand="0" string="Group By">
+               <filter string="author" name="group_by_author" context="{'group_by':'author'}"/>
+               <filter string="publisher" name="group_by_publisher" context="{'group_by':'publisher'}"/>
+           </group>
+
+           </search>
+   </field>
+</record>
+</odoo>
